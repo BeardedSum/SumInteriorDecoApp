@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-poppins bg-secondary-off-white text-gray-900 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-montserrat font-semibold;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-navy text-white font-semibold rounded-md
+           shadow-md hover:bg-primary-navy-dark transition-all duration-300
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent text-primary-navy font-semibold rounded-md
+           border-2 border-primary-navy hover:bg-secondary-off-white
+           transition-all duration-300 active:scale-95;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-secondary-accent-blue text-white font-semibold
+           rounded-md shadow-md hover:bg-blue-500 transition-all duration-300
+           active:scale-95;
+  }
+
+  .btn-premium {
+    @apply px-6 py-3 bg-gradient-to-r from-secondary-luxury-purple to-purple-700
+           text-white font-bold rounded-md shadow-lg hover:shadow-xl
+           transition-all duration-300 active:scale-95;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white border border-gray-200 rounded-xl p-5 shadow-sm
+           hover:shadow-lg transition-all duration-300;
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl
+           transition-all duration-300;
+  }
+
+  /* Input Styles */
+  .input {
+    @apply w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-md
+           text-gray-900 placeholder-gray-400 focus:border-secondary-accent-blue
+           focus:outline-none focus:ring-2 focus:ring-secondary-accent-blue/20
+           transition-all duration-300;
+  }
+
+  .input-error {
+    @apply border-error focus:border-error focus:ring-error/20;
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200
+           bg-[length:200%_100%] animate-shimmer rounded;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-navy to-secondary-accent-blue
+           bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary-navy to-primary-navy-dark;
+  }
+
+  .bg-gradient-accent {
+    @apply bg-gradient-to-r from-secondary-accent-blue to-blue-500;
+  }
+
+  .bg-gradient-premium {
+    @apply bg-gradient-to-r from-secondary-luxury-purple to-purple-700;
+  }
+
+  /* Safe area for mobile devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* React Toastify Custom Styles */
+:root {
+  --toastify-color-success: #10b981;
+  --toastify-color-error: #ef4444;
+  --toastify-color-warning: #f59e0b;
+  --toastify-color-info: #3b82f6;
+}
+
+/* Loading Animation */
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: loading-pulse 1.4s infinite both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loading-pulse {
+  0%,
+  80%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
