@@ -1,0 +1,1238 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Frontend (.env)\
+VITE_API_URL=https://api.sumdecor.com\
+VITE_CLOUDINARY_CLOUD_NAME=sum-homes\
+VITE_PAYSTACK_PUBLIC_KEY=pk_live_xxx\
+VITE_GOOGLE_ANALYTICS_ID=G-XXXXXXX\
+\
+# Backend (.env)\
+NODE_ENV=production\
+PORT=3000\
+DATABASE_URL=postgresql://user:pass@host:5432/db\
+\
+# API Keys\
+REPLICATE_API_KEY=r8_xxxxx\
+GOOGLE_AI_API_KEY=AIzaSyxxxxx\
+ANTHROPIC_API_KEY=sk-ant-xxxxx\
+\
+# Storage\
+CLOUDINARY_CLOUD_NAME=sum-homes\
+CLOUDINARY_API_KEY=xxxxx\
+CLOUDINARY_API_SECRET=xxxxx\
+\
+# Payments\
+PAYSTACK_SECRET_KEY=sk_live_xxxxx\
+FLUTTERWAVE_SECRET_KEY=FLWSECK-xxxxx\
+\
+# Auth\
+JWT_SECRET=your-secret-key\
+OTP_EXPIRY_MINUTES=10\
+\
+# WhatsApp Integration (Optional)\
+WHATSAPP_BUSINESS_API_KEY=xxxxx\
+```\
+\
+### 5.3 Performance Optimization Checklist\
+\
+**Frontend:**\
+- [ ] Code splitting by route\
+- [ ] Lazy load images\
+- [ ] Implement virtual scrolling for lists\
+- [ ] Use WebP format with fallbacks\
+- [ ] Compress assets\
+- [ ] Service worker caching strategy\
+- [ ] IndexedDB for offline data\
+- [ ] Debounce API calls\
+- [ ] Progressive image loading\
+- [ ] Optimize TailwindCSS (purge unused)\
+\
+**Backend:**\
+- [ ] Implement Redis caching\
+- [ ] Database query optimization\
+- [ ] Connection pooling\
+- [ ] Rate limiting per user\
+- [ ] Image compression pipeline\
+- [ ] CDN for static assets\
+- [ ] Gzip/Brotli compression\
+- [ ] Background job queue (Bull/BullMQ)\
+- [ ] API response caching\
+- [ ] Database indexes\
+\
+**Low-Bandwidth Mode:**\
+- [ ] Detect connection speed\
+- [ ] Reduce image quality automatically\
+- [ ] Skip animations\
+- [ ] Minimal UI mode\
+- [ ] Prefetch critical assets only\
+- [ ] Show data usage warnings\
+\
+---\
+\
+## \uc0\u55357 \u56496  PHASE 6: BUSINESS MODEL INTEGRATION\
+\
+### 6.1 Pricing Strategy\
+\
+**Tier 1: Free (Freemium)**\
+- 5 free renders on signup\
+- Watermarked images\
+- 1 style preset access\
+- Mobile only\
+- Standard quality\
+- **Goal:** User acquisition, viral growth\
+\
+**Tier 2: Basic (\uc0\u8358 5,000/month or $6)**\
+- 30 renders/month\
+- No watermark\
+- All style presets\
+- HD quality\
+- WhatsApp sharing\
+- **Target:** Individual homeowners, DIY renovators\
+\
+**Tier 3: Pro (\uc0\u8358 15,000/month or $18)**\
+- 100 renders/month\
+- Multi-view consistency\
+- Batch processing (up to 10 images)\
+- Object removal\
+- Color editor\
+- Priority processing\
+- **Target:** Real estate agents, designers\
+\
+**Tier 4: Agency (\uc0\u8358 40,000/month or $48)**\
+- 500 renders/month\
+- Unlimited projects\
+- API access\
+- White-label exports\
+- Team collaboration (5 users)\
+- Dedicated support\
+- Custom branding\
+- **Target:** Real estate agencies, furniture brands\
+\
+**Pay-As-You-Go:**\
+- \uc0\u8358 1,000 for 10 credits\
+- \uc0\u8358 2,500 for 30 credits\
+- \uc0\u8358 8,000 for 100 credits\
+- Never expires\
+\
+### 6.2 Revenue Streams\
+\
+1. **Subscription Revenue** (Primary)\
+   - Monthly/annual subscriptions\
+   - Target: 70% of revenue\
+\
+2. **Pay-Per-Use Credits**\
+   - One-time credit purchases\
+   - Target: 20% of revenue\
+\
+3. **Affiliate Commissions**\
+   - Furniture links (Jumia, Konga)\
+   - Paint brands\
+   - Target: 5% of revenue\
+\
+4. **White-Label Partnerships**\
+   - Custom implementations for furniture brands\
+   - Real estate portals integration\
+   - Target: 5% of revenue\
+\
+### 6.3 Payment Integration\
+\
+**Primary: Paystack**\
+- Supports Nigerian cards\
+- Mobile money\
+- Bank transfers\
+- USSD\
+- Good API documentation\
+\
+**Secondary: Flutterwave**\
+- Backup payment option\
+- International cards\
+- More African countries\
+\
+**Implementation:**\
+```\
+Payment Flow:\
+1. User selects plan/credits\
+2. Redirect to Paystack checkout\
+3. Paystack handles payment\
+4. Webhook confirms payment\
+5. Credits/subscription activated\
+6. Email/SMS confirmation\
+7. In-app notification\
+\
+\{\
+  "project": \{\
+    "name": "Sum Decor AI",\
+    "tagline": "Luxury Living Redefined with AI",\
+    "version": "1.0.0",\
+    "description": "Mobile-first AI interior design and virtual staging app with Nigerian/African aesthetics",\
+    "platform": "PWA (Progressive Web App)",\
+    "target_market": "Abuja, Nigeria (expanding to West Africa)"\
+  \},\
+\
+  "tech_stack": \{\
+    "frontend": \{\
+      "framework": "React 18+",\
+      "build_tool": "Vite 5+",\
+      "language": "TypeScript 5+",\
+      "styling": "TailwindCSS 3+",\
+      "state_management": "Redux Toolkit + RTK Query",\
+      "routing": "React Router v6",\
+      "pwa": \{\
+        "service_worker": "Workbox",\
+        "offline_storage": "IndexedDB (Dexie.js)",\
+        "manifest": "PWA Manifest with icons"\
+      \},\
+      "ui_libraries": \{\
+        "animations": "Framer Motion",\
+        "icons": "Lucide React",\
+        "image_handling": "React Image Crop, Sharp (server)",\
+        "drag_drop": "React DnD",\
+        "slider": "React Compare Image (before/after)"\
+      \},\
+      "claude_code_plugin": "frontend-design@claude-code-plugins"\
+    \},\
+    "backend": \{\
+      "runtime": "Node.js 20+",\
+      "framework": "Express.js 4+",\
+      "language": "TypeScript 5+",\
+      "orm": "TypeORM 0.3+",\
+      "validation": "Zod",\
+      "authentication": "JWT + bcrypt",\
+      "rate_limiting": "express-rate-limit",\
+      "queue": "BullMQ (Redis-backed)"\
+    \},\
+    "database": \{\
+      "primary": "PostgreSQL 15+",\
+      "orm": "TypeORM with migrations",\
+      "caching": "Redis 7+",\
+      "search": "PostgreSQL Full-Text Search"\
+    \},\
+    "ai_services": \{\
+      "image_generation": "Replicate API (SDXL, ControlNet)",\
+      "image_analysis": "Google Gemini 2.0 Flash",\
+      "text_understanding": "Claude Sonnet 4 (via Anthropic API)",\
+      "image_processing": "Sharp (Node.js)"\
+    \},\
+    "storage": \{\
+      "primary": "Cloudinary",\
+      "backup": "AWS S3 (optional)",\
+      "cdn": "Cloudinary CDN"\
+    \},\
+    "payments": \{\
+      "primary": "Paystack",\
+      "secondary": "Flutterwave"\
+    \}\
+  \},\
+\
+  "brand_identity": \{\
+    "colors": \{\
+      "primary": \{\
+        "navy_blue": \{\
+          "hex": "#003a6b",\
+          "rgb": "rgb(0, 58, 107)",\
+          "hsl": "hsl(207, 100%, 21%)",\
+          "usage": "Primary brand color, headers, CTAs, logo",\
+          "tailwind": "bg-[#003a6b]"\
+        \}\
+      \},\
+      "secondary": \{\
+        "off_white": \{\
+          "hex": "#e7edeb",\
+          "rgb": "rgb(231, 237, 235)",\
+          "hsl": "hsl(160, 14%, 92%)",\
+          "usage": "Backgrounds, cards, contrast areas",\
+          "tailwind": "bg-[#e7edeb]"\
+        \},\
+        "accent_blue": \{\
+          "hex": "#42c3f7",\
+          "rgb": "rgb(66, 195, 247)",\
+          "hsl": "hsl(197, 91%, 61%)",\
+          "usage": "Interactive elements, highlights, progress",\
+          "tailwind": "bg-[#42c3f7]"\
+        \},\
+        "luxury_purple": \{\
+          "hex": "#a020f0",\
+          "rgb": "rgb(160, 32, 240)",\
+          "hsl": "hsl(277, 87%, 53%)",\
+          "usage": "Premium features, VIP elements, accents",\
+          "tailwind": "bg-[#a020f0]"\
+        \}\
+      \},\
+      "semantic": \{\
+        "success": "#10b981",\
+        "warning": "#f59e0b",\
+        "error": "#ef4444",\
+        "info": "#3b82f6"\
+      \},\
+      "neutral": \{\
+        "gray_50": "#f9fafb",\
+        "gray_100": "#f3f4f6",\
+        "gray_200": "#e5e7eb",\
+        "gray_300": "#d1d5db",\
+        "gray_400": "#9ca3af",\
+        "gray_500": "#6b7280",\
+        "gray_600": "#4b5563",\
+        "gray_700": "#374151",\
+        "gray_800": "#1f2937",\
+        "gray_900": "#111827"\
+      \}\
+    \},\
+\
+    "typography": \{\
+      "font_families": \{\
+        "primary": \{\
+          "name": "Montserrat",\
+          "weights": [300, 400, 500, 600, 700, 900],\
+          "usage": "Headers, brand messaging, luxury emphasis",\
+          "fallback": "sans-serif"\
+        \},\
+        "secondary": \{\
+          "name": "Poppins",\
+          "weights": [300, 400, 500, 600, 700],\
+          "usage": "Body text, UI elements, digital content",\
+          "fallback": "sans-serif"\
+        \},\
+        "monospace": \{\
+          "name": "JetBrains Mono",\
+          "weights": [400, 500, 700],\
+          "usage": "Code snippets, technical content",\
+          "fallback": "monospace"\
+        \}\
+      \},\
+      "scale": \{\
+        "xs": "0.75rem (12px)",\
+        "sm": "0.875rem (14px)",\
+        "base": "1rem (16px)",\
+        "lg": "1.125rem (18px)",\
+        "xl": "1.25rem (20px)",\
+        "2xl": "1.5rem (24px)",\
+        "3xl": "1.875rem (30px)",\
+        "4xl": "2.25rem (36px)",\
+        "5xl": "3rem (48px)",\
+        "6xl": "3.75rem (60px)"\
+      \},\
+      "line_heights": \{\
+        "tight": "1.25",\
+        "snug": "1.375",\
+        "normal": "1.5",\
+        "relaxed": "1.625",\
+        "loose": "2"\
+      \}\
+    \},\
+\
+    "spacing": \{\
+      "scale": "4px base (Tailwind default)",\
+      "mobile_padding": "16px (1rem)",\
+      "desktop_padding": "24px (1.5rem)",\
+      "card_padding": "20px (1.25rem)",\
+      "section_gap": "32px (2rem)"\
+    \},\
+\
+    "border_radius": \{\
+      "sm": "4px",\
+      "md": "8px",\
+      "lg": "12px",\
+      "xl": "16px",\
+      "2xl": "24px",\
+      "full": "9999px"\
+    \},\
+\
+    "shadows": \{\
+      "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",\
+      "md": "0 4px 6px -1px rgb(0 0 0 / 0.1)",\
+      "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1)",\
+      "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1)",\
+      "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",\
+      "inner": "inset 0 2px 4px 0 rgb(0 0 0 / 0.06)"\
+    \},\
+\
+    "logo": \{\
+      "primary": \{\
+        "type": "SH Monogram",\
+        "colors": ["#003a6b", "#42c3f7"],\
+        "format": "SVG, PNG (various sizes)",\
+        "usage": "App icon, splash screen, header"\
+      \},\
+      "wordmark": \{\
+        "text": "Sum Homes",\
+        "colors": ["#003a6b", "#42c3f7"],\
+        "format": "SVG, PNG",\
+        "usage": "Marketing, full branding"\
+      \}\
+    \}\
+  \},\
+\
+  "design_system": \{\
+    "ui_components": \{\
+      "buttons": \{\
+        "primary": \{\
+          "bg": "#003a6b",\
+          "hover_bg": "#002447",\
+          "text": "#ffffff",\
+          "border": "none",\
+          "radius": "8px",\
+          "padding": "12px 24px",\
+          "font_weight": 600,\
+          "transition": "all 0.3s ease",\
+          "shadow": "0 4px 6px -1px rgb(0 0 0 / 0.1)"\
+        \},\
+        "secondary": \{\
+          "bg": "transparent",\
+          "hover_bg": "#e7edeb",\
+          "text": "#003a6b",\
+          "border": "2px solid #003a6b",\
+          "radius": "8px",\
+          "padding": "12px 24px",\
+          "font_weight": 600,\
+          "transition": "all 0.3s ease"\
+        \},\
+        "accent": \{\
+          "bg": "#42c3f7",\
+          "hover_bg": "#2ba3d4",\
+          "text": "#ffffff",\
+          "border": "none",\
+          "radius": "8px",\
+          "padding": "12px 24px",\
+          "font_weight": 600,\
+          "transition": "all 0.3s ease",\
+          "shadow": "0 4px 6px -1px rgb(66 195 247 / 0.3)"\
+        \},\
+        "premium": \{\
+          "bg": "linear-gradient(135deg, #a020f0 0%, #6813a8 100%)",\
+          "hover_bg": "linear-gradient(135deg, #8a1bcc 0%, #510d7e 100%)",\
+          "text": "#ffffff",\
+          "border": "none",\
+          "radius": "8px",\
+          "padding": "12px 24px",\
+          "font_weight": 700,\
+          "transition": "all 0.3s ease",\
+          "shadow": "0 8px 16px -4px rgb(160 32 240 / 0.4)"\
+        \},\
+        "ghost": \{\
+          "bg": "transparent",\
+          "hover_bg": "rgba(0, 58, 107, 0.05)",\
+          "text": "#003a6b",\
+          "border": "none",\
+          "radius": "8px",\
+          "padding": "12px 24px",\
+          "font_weight": 500,\
+          "transition": "all 0.3s ease"\
+        \},\
+        "sizes": \{\
+          "sm": "py-2 px-4 text-sm",\
+          "md": "py-3 px-6 text-base",\
+          "lg": "py-4 px-8 text-lg"\
+        \}\
+      \},\
+\
+      "cards": \{\
+        "default": \{\
+          "bg": "#ffffff",\
+          "border": "1px solid #e5e7eb",\
+          "radius": "12px",\
+          "padding": "20px",\
+          "shadow": "0 1px 3px 0 rgb(0 0 0 / 0.1)",\
+          "hover_shadow": "0 10px 15px -3px rgb(0 0 0 / 0.1)",\
+          "transition": "all 0.3s ease"\
+        \},\
+        "elevated": \{\
+          "bg": "#ffffff",\
+          "border": "none",\
+          "radius": "16px",\
+          "padding": "24px",\
+          "shadow": "0 10px 15px -3px rgb(0 0 0 / 0.1)",\
+          "hover_shadow": "0 20px 25px -5px rgb(0 0 0 / 0.1)",\
+          "transition": "all 0.3s ease"\
+        \},\
+        "premium": \{\
+          "bg": "linear-gradient(135deg, #003a6b 0%, #002447 100%)",\
+          "border": "2px solid #42c3f7",\
+          "radius": "16px",\
+          "padding": "24px",\
+          "shadow": "0 20px 25px -5px rgb(160 32 240 / 0.2)",\
+          "text_color": "#ffffff"\
+        \}\
+      \},\
+\
+      "inputs": \{\
+        "text_input": \{\
+          "bg": "#ffffff",\
+          "border": "2px solid #e5e7eb",\
+          "focus_border": "#42c3f7",\
+          "radius": "8px",\
+          "padding": "12px 16px",\
+          "text_color": "#111827",\
+          "placeholder_color": "#9ca3af",\
+          "transition": "all 0.3s ease"\
+        \},\
+        "file_upload": \{\
+          "dropzone_bg": "#f9fafb",\
+          "dropzone_border": "2px dashed #d1d5db",\
+          "dropzone_hover_border": "#42c3f7",\
+          "radius": "12px",\
+          "padding": "32px",\
+          "icon_color": "#6b7280"\
+        \}\
+      \},\
+\
+      "image_components": \{\
+        "before_after_slider": \{\
+          "divider_color": "#42c3f7",\
+          "divider_width": "4px",\
+          "handle_size": "48px",\
+          "handle_color": "#ffffff",\
+          "handle_border": "3px solid #42c3f7",\
+          "handle_shadow": "0 4px 6px -1px rgb(0 0 0 / 0.1)"\
+        \},\
+        "thumbnail": \{\
+          "aspect_ratio": "4:3",\
+          "radius": "8px",\
+          "hover_scale": "1.05",\
+          "transition": "transform 0.3s ease"\
+        \},\
+        "watermark": \{\
+          "position": "bottom-right",\
+          "padding": "8px",\
+          "opacity": "0.7",\
+          "text": "Sum Decor AI",\
+          "font_size": "14px",\
+          "color": "#ffffff",\
+          "bg": "rgba(0, 58, 107, 0.8)",\
+          "radius": "4px"\
+        \}\
+      \},\
+\
+      "loading_states": \{\
+        "spinner": \{\
+          "size": "40px",\
+          "color": "#42c3f7",\
+          "animation": "spin 1s linear infinite"\
+        \},\
+        "progress_bar": \{\
+          "bg": "#e5e7eb",\
+          "fill_color": "#42c3f7",\
+          "height": "8px",\
+          "radius": "4px",\
+          "animation": "smooth 0.3s ease"\
+        \},\
+        "skeleton": \{\
+          "bg": "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",\
+          "animation": "shimmer 1.5s infinite"\
+        \},\
+        "processing_overlay": \{\
+          "bg": "rgba(0, 0, 0, 0.8)",\
+          "text_color": "#ffffff",\
+          "spinner_color": "#42c3f7",\
+          "message_font_size": "18px"\
+        \}\
+      \},\
+\
+      "feedback": \{\
+        "toast": \{\
+          "success_bg": "#10b981",\
+          "error_bg": "#ef4444",\
+          "warning_bg": "#f59e0b",\
+          "info_bg": "#3b82f6",\
+          "text_color": "#ffffff",\
+          "radius": "8px",\
+          "padding": "16px",\
+          "shadow": "0 10px 15px -3px rgb(0 0 0 / 0.1)",\
+          "duration": "4000ms",\
+          "position": "top-right"\
+        \},\
+        "modal": \{\
+          "backdrop_bg": "rgba(0, 0, 0, 0.5)",\
+          "content_bg": "#ffffff",\
+          "radius": "16px",\
+          "padding": "32px",\
+          "max_width": "500px",\
+          "shadow": "0 25px 50px -12px rgb(0 0 0 / 0.25)"\
+        \}\
+      \},\
+\
+      "navigation": \{\
+        "bottom_tab_bar": \{\
+          "bg": "#ffffff",\
+          "height": "64px",\
+          "shadow": "0 -4px 6px -1px rgb(0 0 0 / 0.1)",\
+          "active_color": "#003a6b",\
+          "inactive_color": "#9ca3af",\
+          "indicator_color": "#42c3f7",\
+          "icon_size": "24px"\
+        \},\
+        "top_app_bar": \{\
+          "bg": "#ffffff",\
+          "height": "56px",\
+          "shadow": "0 1px 3px 0 rgb(0 0 0 / 0.1)",\
+          "text_color": "#111827",\
+          "icon_color": "#6b7280"\
+        \}\
+      \}\
+    \},\
+\
+    "ai_design_modes": \{\
+      "inspired_by_interior_ai": [\
+        \{\
+          "id": "3d_vision",\
+          "name": "Interior Design with 3D Vision",\
+          "description": "Maintains room structure while changing style",\
+          "icon": "cube",\
+          "use_case": "Style transformation preserving layout",\
+          "accuracy": "High",\
+          "processing_time": "25-30s",\
+          "credits_cost": 1\
+        \},\
+        \{\
+          "id": "2d_redesign",\
+          "name": "Interior Design (2D Photo)",\
+          "description": "More flexible design with space manipulation",\
+          "icon": "image",\
+          "use_case": "Creative redesign with layout changes",\
+          "accuracy": "Medium",\
+          "processing_time": "20-25s",\
+          "credits_cost": 1\
+        \},\
+        \{\
+          "id": "virtual_staging",\
+          "name": "Virtual Staging AI",\
+          "description": "Fill empty spaces with furniture",\
+          "icon": "home",\
+          "use_case": "Staging vacant properties",\
+          "accuracy": "High",\
+          "processing_time": "30-35s",\
+          "credits_cost": 2\
+        \},\
+        \{\
+          "id": "freestyle",\
+          "name": "Freestyle Generation",\
+          "description": "Generate designs from scratch without input photo",\
+          "icon": "sparkles",\
+          "use_case": "Design inspiration and mood boards",\
+          "accuracy": "N/A",\
+          "processing_time": "15-20s",\
+          "credits_cost": 1\
+        \},\
+        \{\
+          "id": "object_removal",\
+          "name": "Object Removal",\
+          "description": "Remove unwanted furniture or objects",\
+          "icon": "eraser",\
+          "use_case": "Declutter and clean up spaces",\
+          "accuracy": "High",\
+          "processing_time": "15-20s",\
+          "credits_cost": 1\
+        \},\
+        \{\
+          "id": "color_material",\
+          "name": "Color & Material Editor",\
+          "description": "Change wall colors, flooring, cabinet finishes",\
+          "icon": "palette",\
+          "use_case": "Test paint colors and materials",\
+          "accuracy": "Very High",\
+          "processing_time": "10-15s",\
+          "credits_cost": 1\
+        \}\
+      ]\
+    \},\
+\
+    "style_presets": \{\
+      "african_luxury": [\
+        \{\
+          "id": "african_contemporary",\
+          "name": "African Contemporary",\
+          "category": "african",\
+          "thumbnail": "/styles/african-contemporary.jpg",\
+          "description": "Earth tones, natural materials, geometric patterns",\
+          "keywords": "African contemporary interior, earth tones, natural materials, geometric patterns, wooden accents, indoor plants, neutral palette, cultural artifacts, woven textiles",\
+          "is_premium": false,\
+          "popularity": 95\
+        \},\
+        \{\
+          "id": "afro_minimalist",\
+          "name": "Afro-Minimalist",\
+          "category": "african",\
+          "thumbnail": "/styles/afro-minimalist.jpg",\
+          "description": "Clean lines, African art, neutral colors",\
+          "keywords": "Afro-minimalist, clean lines, African art, neutral colors, natural textures, minimal furniture, cultural artifacts, understated elegance",\
+          "is_premium": false,\
+          "popularity": 88\
+        \},\
+        \{\
+          "id": "nigerian_luxury",\
+          "name": "Nigerian Luxury",\
+          "category": "luxury",\
+          "thumbnail": "/styles/nigerian-luxury.jpg",\
+          "description": "Marble floors, chandeliers, rich fabrics, gold accents",\
+          "keywords": "Nigerian luxury interior, marble floors, chandeliers, rich fabrics, gold accents, plush furniture, opulent, high ceilings, premium finishes",\
+          "is_premium": true,\
+          "popularity": 92\
+        \},\
+        \{\
+          "id": "modern_lagos",\
+          "name": "Modern Lagos",\
+          "category": "modern",\
+          "thumbnail": "/styles/modern-lagos.jpg",\
+          "description": "Bright colors, contemporary furniture, urban style",\
+          "keywords": "Modern Lagos apartment, bright colors, contemporary furniture, urban style, artistic, vibrant, metropolitan, creative spaces",\
+          "is_premium": false,\
+          "popularity": 85\
+        \},\
+        \{\
+          "id": "abuja_elite",\
+          "name": "Abuja Elite",\
+          "category": "luxury",\
+          "thumbnail": "/styles/abuja-elite.jpg",\
+          "description": "Presidential elegance, sophisticated finishes",\
+          "keywords": "Abuja luxury home, presidential, elegant, sophisticated, high ceilings, crown molding, premium finishes, executive style",\
+          "is_premium": true,\
+          "popularity": 90\
+        \}\
+      ],\
+      "international": [\
+        \{\
+          "id": "modern_scandinavian",\
+          "name": "Modern Scandinavian",\
+          "category": "modern",\
+          "thumbnail": "/styles/scandinavian.jpg",\
+          "description": "Light colors, functional design, cozy atmosphere",\
+          "keywords": "Scandinavian interior, light wood, white walls, minimalist, functional, cozy, hygge, natural light",\
+          "is_premium": false,\
+          "popularity": 82\
+        \},\
+        \{\
+          "id": "industrial_loft",\
+          "name": "Industrial Loft",\
+          "category": "modern",\
+          "thumbnail": "/styles/industrial.jpg",\
+          "description": "Exposed brick, metal fixtures, raw materials",\
+          "keywords": "Industrial loft, exposed brick, metal fixtures, raw materials, open space, urban, contemporary",\
+          "is_premium": false,\
+          "popularity": 78\
+        \},\
+        \{\
+          "id": "contemporary_luxury",\
+          "name": "Contemporary Luxury",\
+          "category": "luxury",\
+          "thumbnail": "/styles/contemporary-luxury.jpg",\
+          "description": "Sleek lines, premium materials, sophisticated",\
+          "keywords": "Contemporary luxury, sleek lines, premium materials, sophisticated, modern elegance, designer furniture",\
+          "is_premium": true,\
+          "popularity": 87\
+        \},\
+        \{\
+          "id": "boho_chic",\
+          "name": "Boho Chic",\
+          "category": "eclectic",\
+          "thumbnail": "/styles/boho.jpg",\
+          "description": "Eclectic mix, patterns, textures, relaxed vibe",\
+          "keywords": "Bohemian interior, eclectic, patterns, textures, plants, relaxed, artistic, colorful",\
+          "is_premium": false,\
+          "popularity": 75\
+        \},\
+        \{\
+          "id": "mid_century_modern",\
+          "name": "Mid-Century Modern",\
+          "category": "retro",\
+          "thumbnail": "/styles/mid-century.jpg",\
+          "description": "Retro furniture, clean lines, organic shapes",\
+          "keywords": "Mid-century modern, retro furniture, clean lines, organic shapes, wood tones, vintage",\
+          "is_premium": false,\
+          "popularity": 80\
+        \}\
+      ]\
+    \}\
+  \},\
+\
+  "user_flows": \{\
+    "onboarding": \{\
+      "steps": [\
+        \{\
+          "screen": "splash",\
+          "duration": "2s",\
+          "elements": ["logo_animation", "tagline_fade_in"]\
+        \},\
+        \{\
+          "screen": "welcome",\
+          "elements": ["hero_image", "value_proposition", "cta_get_started"],\
+          "optional_skip": true\
+        \},\
+        \{\
+          "screen": "before_after_gallery",\
+          "elements": ["swipeable_examples", "style_categories", "cta_continue"],\
+          "auto_play": true\
+        \},\
+        \{\
+          "screen": "auth_signup",\
+          "elements": ["phone_input", "email_input", "terms_checkbox", "cta_sign_up"],\
+          "validation": ["phone_format", "email_format"]\
+        \},\
+        \{\
+          "screen": "otp_verification",\
+          "elements": ["otp_input_6_digit", "resend_button", "countdown_timer"],\
+          "timeout": "5_minutes"\
+        \},\
+        \{\
+          "screen": "welcome_credits",\
+          "elements": ["congratulations_message", "free_credits_display", "cta_start_creating"],\
+          "credits_awarded": 5\
+        \},\
+        \{\
+          "screen": "quick_tutorial",\
+          "slides": [\
+            \{\
+              "title": "Upload Your Space",\
+              "description": "Take a photo or upload an existing image",\
+              "animation": "upload_demo"\
+            \},\
+            \{\
+              "title": "Choose Your Style",\
+              "description": "Select from 15+ luxury design styles",\
+              "animation": "style_selector_demo"\
+            \},\
+            \{\
+              "title": "Get Your Design",\
+              "description": "AI generates photorealistic renders in 30 seconds",\
+              "animation": "generation_demo"\
+            \}\
+          ],\
+          "skippable": true\
+        \},\
+        \{\
+          "screen": "first_upload_prompt",\
+          "elements": ["camera_button", "gallery_button", "cta_skip_for_now"]\
+        \}\
+      ]\
+    \},\
+\
+    "quick_redesign": \{\
+      "steps": [\
+        \{\
+          "action": "upload_photo",\
+          "methods": ["camera", "gallery", "drag_drop"],\
+          "validations": ["file_type", "file_size_max_10mb", "image_dimensions"]\
+        \},\
+        \{\
+          "action": "auto_analyze",\
+          "ai_tasks": ["room_detection", "object_identification", "lighting_assessment"],\
+          "duration": "3-5s",\
+          "show_progress": true\
+        \},\
+        \{\
+          "action": "select_style",\
+          "ui": "horizontal_swipe_carousel",\
+          "preview": "thumbnail_with_name",\
+          "filter_by": ["category", "popularity", "premium"]\
+        \},\
+        \{\
+          "action": "configure_options",\
+          "optional_settings": [\
+            "design_mode",\
+            "creative_freedom_slider",\
+            "specific_instructions_text"\
+          ]\
+        \},\
+        \{\
+          "action": "confirm_generation",\
+          "elements": ["credit_cost_display", "estimated_time", "cta_generate"],\
+          "credit_check": true\
+        \},\
+        \{\
+          "action": "processing",\
+          "ui": "full_screen_overlay",\
+          "elements": ["animated_progress", "estimated_time_countdown", "fun_facts_carousel"],\
+          "duration": "20-35s"\
+        \},\
+        \{\
+          "action": "view_result",\
+          "elements": [\
+            "before_after_slider",\
+            "download_button",\
+            "share_whatsapp_button",\
+            "regenerate_button",\
+            "try_another_style_button",\
+            "save_to_project_button"\
+          ]\
+        \}\
+      ]\
+    \},\
+\
+    "virtual_staging_agent": \{\
+      "steps": [\
+        \{\
+          "action": "create_project",\
+          "inputs": ["project_name", "property_address", "target_style"],\
+          "optional": ["client_notes", "deadline"]\
+        \},\
+        \{\
+          "action": "bulk_upload",\
+          "max_files": 20,\
+          "ui": "drag_drop_zone",\
+          "show_previews": true\
+        \},\
+        \{\
+          "action": "tag_rooms",\
+          "method": "auto_detect_with_manual_override",\
+          "room_types": ["living_room", "bedroom", "kitchen", "bathroom", "dining_room", "office", "outdoor"]\
+        \},\
+        \{\
+          "action": "select_consistent_style",\
+          "ui": "style_picker_with_preview",\
+          "applies_to": "all_rooms"\
+        \},\
+        \{\
+          "action": "batch_process",\
+          "show_queue": true,\
+          "process_parallel": 3,\
+          "estimated_time_total": "calculated"\
+        \},\
+        \{\
+          "action": "review_results",\
+          "ui": "grid_view_with_filter",\
+          "actions_per_image": ["approve", "regenerate", "edit", "discard"]\
+        \},\
+        \{\
+          "action": "export_package",\
+          "formats": ["zip_download", "whatsapp_gallery_link", "email_delivery"],\
+          "includes": ["original_images", "staged_images", "comparison_images"]\
+        \}\
+      ]\
+    \}\
+  \},\
+\
+  "screen_layouts": \{\
+    "home": \{\
+      "sections": [\
+        \{\
+          "id": "header",\
+          "elements": ["logo", "credits_display", "notification_bell", "menu_icon"],\
+          "sticky": true\
+        \},\
+        \{\
+          "id": "quick_actions",\
+          "layout": "2x2_grid",\
+          "actions": [\
+            \{\
+              "label": "Redesign Room",\
+              "icon": "paintbrush",\
+              "color": "#003a6b"\
+            \},\
+            \{\
+              "label": "Virtual Stage",\
+              "icon": "home",\
+              "color": "#42c3f7"\
+            \},\
+            \{\
+              "label": "Remove Objects",\
+              "icon": "eraser",\
+              "color": "#a020f0"\
+            \},\
+            \{\
+              "label": "Color Editor",\
+              "icon": "palette",\
+              "color": "#10b981"\
+            \}\
+          ]\
+        \},\
+        \{\
+          "id": "recent_projects",\
+          "layout": "horizontal_scroll",\
+          "card_type": "thumbnail_with_title",\
+          "max_visible": 5\
+        \},\
+        \{\
+          "id": "style_inspiration",\
+          "layout": "grid_2_columns",\
+          "card_type": "style_card_with_example"\
+        \},\
+        \{\
+          "id": "trending_designs",\
+          "layout": "carousel",\
+          "auto_play": true,\
+          "interval": "5s"\
+        \}\
+      ]\
+    \},\
+\
+    "create": \{\
+      "layout": "centered_vertical",\
+      "sections": [\
+        \{\
+          "id": "upload_zone",\
+          "type": "drag_drop",\
+          "fallback": ["camera_button", "gallery_button"],\
+          "preview_size": "large"\
+        \},\
+        \{\
+          "id": "mode_selector",\
+          "type": "segmented_control",\
+          "options": ["3D Vision", "2D Redesign", "Virtual Staging", "Freestyle"]\
+        \},\
+        \{\
+          "id": "style_picker",\
+          "type": "horizontal_carousel",\
+          "categories": ["African Luxury", "Modern", "Traditional", "All Styles"]\
+        \},\
+        \{\
+          "id": "advanced_options",\
+          "type": "collapsible_panel",\
+          "fields": ["creative_freedom", "text_prompt", "aspect_ratio"]\
+        \},\
+        \{\
+          "id": "generate_cta",\
+          "type": "fixed_bottom_button",\
+          "label": "Generate Design (1 credit)"\
+        \}\
+      ]\
+    \},\
+\
+    "projects": \{\
+      "layout": "list_with_filters",\
+      "sections": [\
+        \{\
+          "id": "filters",\
+          "type": "horizontal_chips",\
+          "options": ["All", "Completed", "Processing", "Favorites"]\
+        \},\
+        \{\
+          "id": "sort",\
+          "type": "dropdown",\
+          "options": ["Recent", "Oldest", "Most Used Style", "Room Type"]\
+        \},\
+        \{\
+          "id": "project_list",\
+          "type": "vertical_scroll",\
+          "card_layout": "thumbnail_left_details_right",\
+          "actions": ["view", "share", "delete"]\
+        \}\
+      ]\
+    \},\
+\
+    "result_viewer": \{\
+      "layout": "full_screen_overlay",\
+      "sections": [\
+        \{\
+          "id": "main_image_area",\
+          "type": "before_after_slider",\
+          "gestures": ["drag_divider", "pinch_zoom", "double_tap_zoom"]\
+        \},\
+        \{\
+          "id": "action_bar",\
+          "type": "fixed_bottom",\
+          "actions": [\
+            \{\
+              "icon": "download",\
+              "label": "Download",\
+              "color": "#003a6b"\
+            \},\
+            \{\
+              "icon": "whatsapp",\
+              "label": "Share",\
+              "color": "#25d366"\
+            \},\
+            \{\
+              "icon": "repeat",\
+              "label": "Regenerate",\
+              "color": "#42c3f7"\
+            \},\
+            \{\
+              "icon": "star",\
+              "label": "Save",\
+              "color": "#f59e0b"\
+            \}\
+          ]\
+        \},\
+        \{\
+          "id": "style_variations",\
+          "type": "horizontal_scroll_bottom_sheet",\
+          "label": "Try Other Styles",\
+          "quick_generate": true\
+        \}\
+      ]\
+    \},\
+\
+    "account": \{\
+      "sections": [\
+        \{\
+          "id": "profile_header",\
+          "elements": ["avatar", "name", "user_type_badge", "edit_profile_button"]\
+        \},\
+        \{\
+          "id": "credits_card",\
+          "type": "premium_card",\
+          "elements": ["current_balance", "add_credits_button", "subscription_status"]\
+        \},\
+        \{\
+          "id": "menu_list",\
+          "items": [\
+            \{ "label": "Subscription Plans", "icon": "crown", "route": "/subscription" \},\
+            \{ "label": "Payment History", "icon": "receipt", "route": "/payments" \},\
+            \{ "label": "Settings", "icon": "settings", "route": "/settings" \},\
+            \{ "label": "Help & Support", "icon": "help-circle", "route": "/support" \},\
+            \{ "label": "Share App", "icon": "share-2", "route": "/share" \},\
+            \{ "label": "Logout", "icon": "log-out", "action": "logout" \}\
+          ]\
+        \}\
+      ]\
+    \}\
+  \},\
+\
+  "animations": \{\
+    "page_transitions": \{\
+      "type": "slide_fade",\
+      "duration": "300ms",\
+      "easing": "ease-in-out"\
+    \},\
+    "button_press": \{\
+      "type": "scale",\
+      "scale": 0.95,\
+      "duration": "150ms"\
+    \},\
+    "card_hover": \{\
+      "type": "lift",\
+      "translate_y": "-4px",\
+      "shadow_increase": "md_to_xl",\
+      "duration": "300ms"\
+    \},\
+    "loading_spinner": \{\
+      "type": "rotate",\
+      "duration": "1s",\
+      "iteration": "infinite",\
+      "easing": "linear"\
+    \},\
+    "skeleton_shimmer": \{\
+      "type": "gradient_slide",\
+      "duration": "1.5s",\
+      "iteration": "infinite"\
+    \},\
+    "toast_enter": \{\
+      "type": "slide_fade",\
+      "from": "top",\
+      "duration": "300ms",\
+      "easing": "ease-out"\
+    \},\
+    "modal_enter": \{\
+      "backdrop": \{\
+        "type": "fade_in",\
+        "duration": "200ms"\
+      \},\
+      "content": \{\
+        "type": "scale_fade",\
+        "scale_from": 0.95,\
+        "duration": "300ms",\
+        "easing": "ease-out"\
+      \}\
+    \}\
+  \},\
+\
+  "responsive_breakpoints": \{\
+    "mobile": "< 640px",\
+    "tablet": "640px - 1024px",\
+    "desktop": "> 1024px",\
+    "design_priority": "mobile_first"\
+  \},\
+\
+  "performance_targets": \{\
+    "initial_load": "< 3s",\
+    "time_to_interactive": "< 5s",\
+    "first_contentful_paint": "< 1.5s",\
+    "largest_contentful_paint": "< 2.5s",\
+    "cumulative_layout_shift": "< 0.1",\
+    "image_optimization": \{\
+      "format": "WebP with JPEG fallback",\
+      "lazy_loading": true,\
+      "compression_quality": 85\
+    \},\
+    "api_response": "< 200ms (cached), < 1s (uncached)",\
+    "generation_time": "20-35s",\
+    "offline_functionality": ["view_saved_projects", "queue_generations"]\
+  \},\
+\
+  "pwa_configuration": \{\
+    "manifest": \{\
+      "name": "Sum Decor AI",\
+      "short_name": "Sum Decor",\
+      "description": "AI Interior Design & Virtual Staging",\
+      "theme_color": "#003a6b",\
+      "background_color": "#e7edeb",\
+      "display": "standalone",\
+      "orientation": "portrait",\
+      "start_url": "/",\
+      "scope": "/",\
+      "icons": [\
+        \{ "src": "/icons/icon-72x72.png", "sizes": "72x72", "type": "image/png" \},\
+        \{ "src": "/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" \},\
+        \{ "src": "/icons/icon-128x128.png", "sizes": "128x128", "type": "image/png" \},\
+        \{ "src": "/icons/icon-144x144.png", "sizes": "144x144", "type": "image/png" \},\
+        \{ "src": "/icons/icon-152x152.png", "sizes": "152x152", "type": "image/png" \},\
+        \{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" \},\
+        \{ "src": "/icons/icon-384x384.png", "sizes": "384x384", "type": "image/png" \},\
+        \{ "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" \}\
+      ]\
+    \},\
+    "service_worker": \{\
+      "caching_strategies": \{\
+        "static_assets": "cache_first",\
+        "api_calls": "network_first",\
+        "images": "cache_first_with_revalidation",\
+        "generated_images": "cache_only_after_generation"\
+      \},\
+      "offline_fallback": "/offline.html"\
+    \}\
+  \},\
+\
+  "accessibility": \{\
+    "wcag_level": "AA",\
+    "features": [\
+      "keyboard_navigation",\
+      "screen_reader_support",\
+      "high_contrast_mode",\
+      "focus_indicators",\
+      "aria_labels",\
+      "alt_text_all_images",\
+      "semantic_html"\
+    ],\
+    "color_contrast_ratios": \{\
+      "normal_text": "> 4.5:1",\
+      "large_text": "> 3:1",\
+      "ui_components": "> 3:1"\
+    \}\
+  \},\
+\
+  "marketing_assets": \{\
+    "app_store_screenshots": [\
+      "01_splash_screen",\
+      "02_home_dashboard",\
+      "03_style_picker",\
+      "04_before_after_comparison",\
+      "05_result_viewer",\
+      "06_projects_gallery"\
+    ],\
+    "promotional_video": \{\
+      "duration": "60s",\
+      "format": "vertical_9:16",\
+      "highlights": [\
+        "upload_demo",\
+        "ai_processing_visualization",\
+        "style_transformation",\
+        "whatsapp_sharing",\
+        "testimonial_clips"\
+      ]\
+    \},\
+    "social_media_templates": \{\
+      "before_after_post": \{\
+        "format": "1080x1080",\
+        "layout": "split_screen_with_slider",\
+        "branding": "logo_watermark_bottom_right"\
+      \},\
+      "story_template": \{\
+        "format": "1080x1920",\
+        "elements": ["property_image", "cta_swipe_up", "logo_top"]\
+      \}\
+    \}\
+  \}\
+\}}
