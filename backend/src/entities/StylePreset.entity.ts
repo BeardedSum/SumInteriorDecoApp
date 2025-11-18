@@ -36,7 +36,6 @@ export class StylePreset {
     type: 'enum',
     enum: StyleCategory,
   })
-  @Index()
   category: StyleCategory;
 
   @Column({ type: 'text', nullable: true })
@@ -49,15 +48,12 @@ export class StylePreset {
   thumbnail_url: string | null;
 
   @Column({ type: 'boolean', default: false })
-  @Index()
   is_premium: boolean;
 
   @Column({ type: 'boolean', default: true })
-  @Index()
   is_active: boolean;
 
   @Column({ type: 'int', default: 0 })
-  @Index()
   popularity: number; // Used for sorting/recommendations
 
   @Column({ type: 'int', default: 0 })

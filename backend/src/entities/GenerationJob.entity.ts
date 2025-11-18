@@ -54,7 +54,6 @@ export class GenerationJob {
     enum: JobStatus,
     default: JobStatus.QUEUED,
   })
-  @Index()
   status: JobStatus;
 
   @Column({ type: 'varchar', length: 500, nullable: true })

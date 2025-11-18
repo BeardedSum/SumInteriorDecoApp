@@ -52,7 +52,6 @@ export class Project {
     enum: ProjectStatus,
     default: ProjectStatus.DRAFT,
   })
-  @Index()
   status: ProjectStatus;
 
   @Column({

@@ -217,12 +217,12 @@ nano .env
 
 ```env
 # Database
-DATABASE_URL=postgresql://user:password@localhost:5432/sum_decor_db
+DATABASE_URL=postgresql://user:password@localhost:5432/SumDeco
 DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=your_password
-DB_NAME=sum_decor_db
+DB_NAME=SumDeco
 
 # Redis
 REDIS_HOST=localhost
@@ -270,11 +270,11 @@ VITE_CLOUDINARY_CLOUD_NAME=your-cloud-name
 psql -U postgres
 
 # Create database
-CREATE DATABASE sum_decor_db;
+CREATE DATABASE SumDeco;
 
 # Create user (optional)
 CREATE USER sum_decor_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE sum_decor_db TO sum_decor_user;
+GRANT ALL PRIVILEGES ON DATABASE SumDeco TO sum_decor_user;
 
 # Exit
 \q

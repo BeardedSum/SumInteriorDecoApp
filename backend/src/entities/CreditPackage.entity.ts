@@ -21,7 +21,6 @@ export class CreditPackage {
   description: string | null;
 
   @Column({ type: 'int' })
-  @Index()
   credits_amount: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
@@ -34,7 +33,6 @@ export class CreditPackage {
   bonus_credits: number | null;
 
   @Column({ type: 'boolean', default: true })
-  @Index()
   is_active: boolean;
 
   @Column({ type: 'int', default: 0 })

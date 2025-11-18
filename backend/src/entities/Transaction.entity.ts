@@ -47,14 +47,12 @@ export class Transaction {
   user_id: string;
 
   @Column({ type: 'varchar', length: 255, unique: true })
-  @Index()
   reference: string;
 
   @Column({
     type: 'enum',
     enum: TransactionType,
   })
-  @Index()
   transaction_type: TransactionType;
 
   @Column({
@@ -62,7 +60,6 @@ export class Transaction {
     enum: TransactionStatus,
     default: TransactionStatus.PENDING,
   })
-  @Index()
   status: TransactionStatus;
 
   @Column({

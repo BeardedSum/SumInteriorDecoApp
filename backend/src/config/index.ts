@@ -179,8 +179,9 @@ const config: Config = {
     port: parseInt(process.env.DB_PORT || '5432', 10),
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || '',
-    name: process.env.DB_NAME || 'sum_decor_db',
-    synchronize: process.env.DB_SYNCHRONIZE === 'true',
+    name: process.env.DB_NAME || 'SumDeco',
+    // synchronize: process.env.DB_SYNCHRONIZE === 'true', 
+    synchronize: true,
     logging: process.env.DB_LOGGING === 'true',
   },
 

@@ -32,11 +32,9 @@ export class User {
   id: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  @Index()
   email: string | null;
 
   @Column({ type: 'varchar', length: 20, nullable: true })
-  @Index()
   phone_number: string | null;
 
   @Column({ type: 'varchar', length: 255, nullable: true })

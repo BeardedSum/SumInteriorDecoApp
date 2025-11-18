@@ -45,7 +45,6 @@ export class Subscription {
     type: 'enum',
     enum: SubscriptionPlan,
   })
-  @Index()
   plan: SubscriptionPlan;
 
   @Column({
@@ -53,7 +52,6 @@ export class Subscription {
     enum: SubscriptionStatus,
     default: SubscriptionStatus.ACTIVE,
   })
-  @Index()
   status: SubscriptionStatus;
 
   @Column({
@@ -76,7 +74,6 @@ export class Subscription {
   current_period_start: Date;
 
   @Column({ type: 'timestamp' })
-  @Index()
   current_period_end: Date;
 
   @Column({ type: 'boolean', default: true })
