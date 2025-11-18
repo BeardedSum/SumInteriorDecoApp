@@ -182,6 +182,21 @@ class ApiService {
     return response.data;
   }
 
+  async analyzeImage(imageUrl: string): Promise<ApiResponse<any>> {
+    const response = await this.api.post('/generation/analyze', { image_url: imageUrl });
+    return response.data;
+  }
+
+  async getDesignConsultation(data: {
+    requirements: string;
+    room_type: string;
+    budget?: number;
+    preferences?: string[];
+  }): Promise<ApiResponse<any>> {
+    const response = await this.api.post('/generation/consultation', data);
+    return response.data;
+  }
+
   // ===== Styles =====
   async getStyles(): Promise<ApiResponse<StylePreset[]>> {
     const response = await this.api.get('/styles');
@@ -190,6 +205,21 @@ class ApiService {
 
   async getStylesByCategory(category: string): Promise<ApiResponse<StylePreset[]>> {
     const response = await this.api.get(`/styles/category/${category}`);
+    return response.data;
+  }
+
+  async getStyle(id: string): Promise<ApiResponse<StylePreset>> {
+    const response = await this.api.get(`/styles/${id}`);
+    return response.data;
+  }
+
+  async getStyleCategories(): Promise<ApiResponse<string[]>> {
+    const response = await this.api.get('/styles/categories');
+    return response.data;
+  }
+
+  async getPopularStyles(limit: number = 10): Promise<ApiResponse<StylePreset[]>> {
+    const response = await this.api.get(`/styles/popular?limit=${limit}`);
     return response.data;
   }
 

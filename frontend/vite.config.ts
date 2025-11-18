@@ -39,23 +39,27 @@ export default defineConfig({
         ],
       },
       workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
+          // API calls - Network First strategy
           {
-            urlPattern: /^https:\/\/api\.sumdecor\.com\/.*/i,
+            urlPattern: /^https?:\/\/.*\/api\/(auth|projects|generation|styles)\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24, // 24 hours
+                maxAgeSeconds: 60 * 60, // 1 hour
               },
               cacheableResponse: {
                 statuses: [0, 200],
               },
+              networkTimeoutSeconds: 10,
             },
           },
+          // Static assets - Cache First
           {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'image-cache',
@@ -65,7 +69,47 @@ export default defineConfig({
               },
             },
           },
+          // Generated images from Cloudinary - Cache First with update
+          {
+            urlPattern: /^https:\/\/res\.cloudinary\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'cloudinary-cache',
+              expiration: {
+                maxEntries: 150,
+                maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
+              },
+            },
+          },
+          // Fonts - Cache First
+          {
+            urlPattern: /\.(?:woff|woff2|ttf|eot)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'font-cache',
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+              },
+            },
+          },
+          // Google Fonts - Stale While Revalidate
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
+            },
+          },
         ],
+      },
+      devOptions: {
+        enabled: true,
+        type: 'module',
       },
     }),
   ],
