@@ -76,7 +76,7 @@ Format your response as JSON:
 }`;
 
       const message = await this.client.messages.create({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20250929',
         max_tokens: 4096,
         messages: [
           {
@@ -136,7 +136,7 @@ Format as JSON:
 }`;
 
       const message = await this.client.messages.create({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20250929',
         max_tokens: 2048,
         messages: [
           {
@@ -184,7 +184,7 @@ Return as a JSON array of strings, where each string is a complete, detailed des
 ["idea 1", "idea 2", "idea 3", "idea 4", "idea 5"]`;
 
       const message = await this.client.messages.create({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20250929',
         max_tokens: 2048,
         messages: [
           {
@@ -243,7 +243,7 @@ Return as JSON:
 }`;
 
       const message = await this.client.messages.create({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20250929',
         max_tokens: 1024,
         messages: [
           {
@@ -311,7 +311,7 @@ Stay within budget. Format as JSON:
 }`;
 
       const message = await this.client.messages.create({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20250929',
         max_tokens: 3072,
         messages: [
           {

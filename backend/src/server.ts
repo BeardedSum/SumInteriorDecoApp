@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import { createServer } from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -6,14 +7,18 @@ import rateLimit from 'express-rate-limit';
 import config from './config';
 import { initializeDatabase } from './config/data-source';
 import { errorHandler, notFoundHandler } from './middleware/error.middleware';
+import socketService from './services/socket.service';
 import authRoutes from './routes/auth.routes';
 import projectRoutes from './routes/project.routes';
 import generationRoutes from './routes/generation.routes';
 import styleRoutes from './routes/style.routes';
 import webhookRoutes from './routes/webhook.routes';
+import paymentRoutes from './routes/payment.routes';
+import uploadRoutes from './routes/upload.routes';
 
 // Initialize Express app
 const app: Application = express();
+const httpServer = createServer(app);
 
 // Security middleware
 app.use(helmet());
@@ -61,10 +66,8 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/generation', generationRoutes);
 app.use('/api/styles', styleRoutes);
 app.use('/api/webhooks', webhookRoutes);
-
-// Future routes (to be implemented)
-// app.use('/api/payments', paymentRoutes);
-// app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // Error handling
 app.use(notFoundHandler);
@@ -76,9 +79,12 @@ const startServer = async () => {
     // Initialize database connection
     await initializeDatabase();
 
+    // Initialize Socket.io for real-time updates
+    socketService.initialize(httpServer);
+
     // Start listening
     const PORT = config.port;
-    app.listen(PORT, () => {
+    httpServer.listen(PORT, () => {
       console.log(`
 ╔═══════════════════════════════════════════════════╗
 ║                                                   ║
@@ -90,6 +96,7 @@ const startServer = async () => {
 ║                                                   ║
 ║  Status:      ✅ Server is running               ║
 ║  Database:    ✅ Connected                        ║
+║  Socket.io:   ✅ Initialized                      ║
 ║                                                   ║
 ╚═══════════════════════════════════════════════════╝
       `);
